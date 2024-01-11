@@ -6,7 +6,7 @@ function writeAndRead(path, obj){
             console.log(err);
         } else {
             console.log('File written successfully');
-            
+
             fs.readFile('miFichero.json', 'utf8', function(err, data){
                 if (err) {
                     console.log(err);
@@ -19,5 +19,8 @@ function writeAndRead(path, obj){
     });
 }
 
-writeAndRead('./miFichero.json', {calle:'Teruel', numero: 8});
-// fs.writeAndRead('./miFichero.json', {calle: 'Teruel', numero: 8})
+// writeAndRead('./miFichero.json', {calle:'Teruel', numero: 8});
+
+module.exports = {
+    writeAndRead
+}; 
