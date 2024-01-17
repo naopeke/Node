@@ -1,2 +1,0 @@
-# Node
-Curso de Codenotch
