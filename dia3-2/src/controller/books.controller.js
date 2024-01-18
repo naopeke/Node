@@ -18,7 +18,7 @@ let books = [
 function getBooksParams(req, res){
     let respuesta;
     let bookId = req.params.id_book;
-    let matchedBook = books.find(book => book.id_book === id);
+    let matchedBook = books.find(book => book.id_book === parseInt(bookId));
     if (matchedBook != null && id === matchedBook.id_book)        
         respuesta = {error: false, codigo: 200, mensaje: matchedBook};
     else
