@@ -17,39 +17,29 @@ let books = [
 
 function getBooksParams(req, res){
     let respuesta;
-    let bookId = req.params.id_book;
-    let matchedBook = books.find(book => book.id_book === id);
-    if (matchedBook != null && id === matchedBook.id_book)        
-        respuesta = {error: false, codigo: 200, mensaje: matchedBook};
-    else
-        respuesta = {error: true, codigo: 200, mensaje: 'El id de libro no existe'};
-    res.send(respuesta);
-    }
+    let id_book = req.params.id; 
 
-// Si usa varios GET req en el mismo End-Point, solo ultimo sale. Para solucionar, usar end-points distintos o mergear los 2 métodos
-//router.get('/books', bookCtrl.getBookQuery); と router.get('/books', bookCtrl.getBook); のように同じエンドポイントに対して複数のGETリクエストを設定すると、最後に定義されたものが優先され、前のものは無視される
+    if (books != null) {
+        let matchedBook = books.filter(book => book.id_book == id_book);
+        console.log(matchedBook);
+        if (matchedBook.length > 0) {
+            respuesta = {error: false, codigo: 200, data: matchedBook};
+        } else {
+            respuesta = {error: true, codigo: 200, mensaje: 'El id de libro no existe'};
+        }
+    }
+    res.send(respuesta);
+}
+
+
+
 function getBooks(req, res){
-    if(!req.query.id){
         let respuesta;
         if (books != null)
             respuesta = books;
         else
             respuesta = { error: true, codigo: 200, mensaje:'El libro no existe' };
         res.send(respuesta);  
-    } else {
-        let bookId = req.query.id;
-        if (bookId != null) {
-            let matchedBook = books.find(book => book.id_book == bookId);
-            if (matchedBook != null) {
-                res.send(matchedBook);
-            } else {
-                res.send({ error: true, codigo: 200, mensaje: 'No se encontraron libros con el ID especificado' });
-            }
-        } else {
-            res.send({ error: true, codigo: 200, mensaje: 'El parámetro "id" no se proporcionó en la consulta' });
-        }
-    }
-
 }
 
 
