@@ -17,10 +17,10 @@ let books = [
 
 function getBooksParams(req, res){
     let respuesta;
-    let id_book = req.params.id; 
+    let bookId = req.params.id; 
 
     if (books != null) {
-        let matchedBook = books.filter(book => book.id_book == id_book);
+        let matchedBook = books.filter(book => book.id_book == bookId);
         console.log(matchedBook);
         if (matchedBook.length > 0) {
             respuesta = {error: false, codigo: 200, data: matchedBook};
@@ -101,17 +101,10 @@ res.send(respuesta);
 }
 
 
-
-function errorBooks(req, res){
-    console.log('The requested link does not exist');
-    res.status(404).json({ error: true, codigo: 404, message: 'Endpoint is not found' });
-}
-
 module.exports = {
     getBooksParams,
     getBooks,
     postBooks,
     putBooks,
     deleteBooks,
-    errorBooks
 }

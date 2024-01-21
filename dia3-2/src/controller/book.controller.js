@@ -70,16 +70,10 @@ function deleteBook(req,res){
     res.send(respuesta);
 }
 
-function errorBook(req, res){
-    console.log('The requested link does not exist');
-    res.status(404).json({ error: true, codigo: 404, message: 'Endpoint is not found' });
-}
-
 
 module.exports = {
     getBook,
     postBook,
     putBook,
     deleteBook,
-    errorBook
 }
