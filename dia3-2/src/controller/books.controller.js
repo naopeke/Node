@@ -14,6 +14,15 @@ let books = [
 ];
 
 
+function getBooks(req, res){
+        let respuesta;
+        if (books != null)
+            respuesta = books;
+        else
+            respuesta = { error: true, codigo: 200, mensaje:'El libro no existe' };
+        res.send(respuesta);  
+}
+
 
 function getBooksParams(req, res){
     let respuesta;
@@ -30,18 +39,6 @@ function getBooksParams(req, res){
     }
     res.send(respuesta);
 }
-
-
-
-function getBooks(req, res){
-        let respuesta;
-        if (books != null)
-            respuesta = books;
-        else
-            respuesta = { error: true, codigo: 200, mensaje:'El libro no existe' };
-        res.send(respuesta);  
-}
-
 
 // create : add new books
 function postBooks(req, res){

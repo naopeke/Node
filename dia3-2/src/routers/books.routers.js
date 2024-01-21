@@ -3,7 +3,7 @@ const router = Router();
 const bookCtrl = require('../controller/books.controller');
 
 router.get('/', bookCtrl.getBooks)
-router.get('/:id', bookCtrl.getBooksParams);
+router.get('/:id', bookCtrl.getBooksParams); // .../books/3
 router.post('/', bookCtrl.postBooks);
 router.put('/', bookCtrl.putBooks);
 router.delete('/', bookCtrl.deleteBooks);
