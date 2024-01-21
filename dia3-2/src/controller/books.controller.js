@@ -14,6 +14,15 @@ let books = [
 ];
 
 
+function getBooks(req, res){
+        let respuesta;
+        if (books != null)
+            respuesta = books;
+        else
+            respuesta = { error: true, codigo: 200, mensaje:'El libro no existe' };
+        res.send(respuesta);  
+}
+
 
 function getBooksParams(req, res){
     let respuesta;
@@ -30,17 +39,6 @@ function getBooksParams(req, res){
     }
     res.send(respuesta);
 }
-
-
-function getBooks(req, res){
-        let respuesta;
-        if (books != null)
-            respuesta = books;
-        else
-            respuesta = { error: true, codigo: 200, mensaje:'El libro no existe' };
-        res.send(respuesta);  
-}
-
 
 // create : add new books
 function postBooks(req, res){
@@ -100,17 +98,10 @@ res.send(respuesta);
 }
 
 
-
-function errorBooks(req, res){
-    console.log('The requested link does not exist');
-    res.status(404).json({ error: true, codigo: 404, message: 'Endpoint is not found' });
-}
-
 module.exports = {
     getBooksParams,
     getBooks,
     postBooks,
     putBooks,
     deleteBooks,
-    errorBooks
 }
